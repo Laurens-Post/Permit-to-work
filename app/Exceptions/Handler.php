@@ -42,10 +42,18 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+public function render($request, Exception $e)
+{
+    if ($this->isHttpException($e))
+    {       
+        if($e instanceof NotFoundHttpException)
+        {
+            return response()->view('front.missing', [], 404);
+        }
+        return $this->renderHttpException($e);
     }
+    return parent::render($request, $e);
+}
 
     /**
      * Convert an authentication exception into an unauthenticated response.

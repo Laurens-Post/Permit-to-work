@@ -47,14 +47,19 @@ class Kernel implements KernelContract
      *
      * @var array
      */
-    protected $middleware = [];
+    protected $middleware = [
+
+	
+	];
 
     /**
      * The application's route middleware groups.
      *
      * @var array
      */
-    protected $middlewareGroups = [];
+    protected $middlewareGroups = [
+
+	];
 
     /**
      * The application's route middleware.
